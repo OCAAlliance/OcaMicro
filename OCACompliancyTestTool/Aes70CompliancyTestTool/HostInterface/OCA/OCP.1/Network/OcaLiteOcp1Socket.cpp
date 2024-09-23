@@ -41,7 +41,7 @@ INT32 OcfLiteHostInterfaceSelect(INT32 highest, OcfLiteSelectableSet& readset,  
     if (timeout > 0)
     {
         timeValue.tv_sec = timeout / 1000;
-        timeValue.tv_usec = timeout % 1000;
+        timeValue.tv_usec = (timeout % 1000) * 1000;
     }
     
     return select(highest + 1, &readset, &writeset, &exceptset, &timeValue);
